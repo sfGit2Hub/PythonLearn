@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from urllib import request, error
+# http://pythonhosted.org/pyquery/api.html
 from pyquery import PyQuery as pq
 import re
 
