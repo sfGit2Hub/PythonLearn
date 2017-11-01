@@ -7,7 +7,7 @@ detector = dlib.get_frontal_face_detector()
 #   使用官方的训练集初始化     http://dlib.net/files/ 下载
 landmark_predictor = dlib.shape_predictor('E:\Program Files\sf-demo\shape_predictor_68_face_landmarks.dat')
 facerec = dlib.face_recognition_model_v1('E:\Program Files\sf-demo\dlib_face_recognition_resnet_model_v1.dat')
-img = cv2.imread('./man-face.jpg')
+img = cv2.imread('./lena.jpg')
 faces = detector(img, 1)
 if (len(faces) > 0):
     for k,d in enumerate(faces):
