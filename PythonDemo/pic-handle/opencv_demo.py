@@ -3,6 +3,30 @@ from PIL import Image
 
 img_path = './lena.jpg'
 image = cv2.imread(filename=img_path)
+gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+cv2.imshow('gray image', gray_img)
+
+#   固定阙值二值化
+#   cv2.threshold(src, thresh, maxval, type[, dst]) 
+#   src 为输入图像；
+#   thresh 为阈值；
+#   maxval 为输出图像的最大值；
+#   type 为阈值的类型；
+#   dst 为目标图像
+retval, im_at_fixed = cv2.threshold(gray_img, 120, 255, cv2.THRESH_BINARY) 
+cv2.imshow('fxied binary image', im_at_fixed)
+
+#   自适应二值化
+#   cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst])
+#   src 为输入图像；
+#   maxval 为输出图像的最大值；
+#   adaptiveMethod 设置为cv2.ADAPTIVE_THRESH_MEAN_C表示利用算术均值法，设置为cv2.ADAPTIVE_THRESH_GAUSSIAN_C表示用高斯权重均值法；
+#   thresholdType: 阈值的类型；
+#   blockSize: b的值(必须为单数)；
+#   C 为从均值中减去的常数，用于得到阈值；
+#   dst 为目标图像
+im_at_mean = cv2.adaptiveThreshold(gray_img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 15, 5)
+cv2.imshow('adaptive binary image', im_at_mean)
 
 #   获取图片尺寸
 img_hight = image.shape[0]
