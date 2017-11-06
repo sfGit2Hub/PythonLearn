@@ -10,15 +10,9 @@ image = cv2.imread(imagepath)
 gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
 
 # 探测图片中的人脸
-faces = face_cascade.detectMultiScale(
-    gray,
-    scaleFactor = 1.15,
-    minNeighbors = 5,
-    minSize = (5,5),
-    flags = cv2.cv.CV_HAAR_SCALE_IMAGE
-)
+faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-print "发现{0}个人脸!".format(len(faces))
+print("发现{0}个人脸!".format(len(faces)))
 
 for(x,y,w,h) in faces:
     # cv2.rectangle(image,(x,y),(x+w,y+w),(0,255,0),2)
